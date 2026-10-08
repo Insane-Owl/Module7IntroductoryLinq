@@ -48,6 +48,7 @@ namespace Module7JsonStudentRecords
             dgvStudentRecords.DataSource = null;
             dgvStudentRecords.DataSource = students;
 
+            // make the data view look nicer
             dgvStudentRecords.Columns["StudentId"]!.Width = 50;
             dgvStudentRecords.Columns["FirstName"]!.Width = 100;
             dgvStudentRecords.Columns["LastName"]!.Width = 100;
@@ -88,7 +89,7 @@ namespace Module7JsonStudentRecords
                 string json = File.ReadAllText(filePath);
                 if (string.IsNullOrWhiteSpace(json)) throw new Exception("File is empty.");
 
-                students = JsonSerializer.Deserialize<List<Student>>(json);
+                students = JsonSerializer.Deserialize<List<Student>>(json)!;
                 DisplayStudents();
                 lblStatus.Text = "Records loaded.";
             }

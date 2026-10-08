@@ -7,6 +7,7 @@ namespace Module7JsonStudentRecords
 {
     public class Student
     {
+        // DisplayName makes it so that the raw variable names aren't shown in the data grid view.
         [DisplayName("ID")]
         public int StudentId { get; set; }
         [DisplayName("First Name")]
