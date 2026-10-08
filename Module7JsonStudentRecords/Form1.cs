@@ -47,6 +47,12 @@ namespace Module7JsonStudentRecords
         {
             dgvStudentRecords.DataSource = null;
             dgvStudentRecords.DataSource = students;
+
+            dgvStudentRecords.Columns["StudentId"]!.Width = 50;
+            dgvStudentRecords.Columns["FirstName"]!.Width = 100;
+            dgvStudentRecords.Columns["LastName"]!.Width = 100;
+            dgvStudentRecords.Columns["ProgramName"]!.Width = 150;
+            dgvStudentRecords.Columns["GPA"]!.Width = 50;
         }
 
         private void ClearDisplay()
