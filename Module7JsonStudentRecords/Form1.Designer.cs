@@ -100,6 +100,7 @@
             btnAddStudent.TabIndex = 1;
             btnAddStudent.Text = "Add Student";
             btnAddStudent.UseVisualStyleBackColor = true;
+            btnAddStudent.Click += BtnAddStudent_Click;
             // 
             // tlpForms
             // 
@@ -249,7 +250,7 @@
             lblGPA.Name = "lblGPA";
             lblGPA.Size = new Size(92, 30);
             lblGPA.TabIndex = 5;
-            lblGPA.Text = "Program Name:";
+            lblGPA.Text = "GPA:";
             lblGPA.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // numGPA
@@ -271,7 +272,7 @@
             grpStudentRecords.Dock = DockStyle.Fill;
             grpStudentRecords.Location = new Point(3, 139);
             grpStudentRecords.Name = "grpStudentRecords";
-            grpStudentRecords.Size = new Size(608, 22);
+            grpStudentRecords.Size = new Size(608, 221);
             grpStudentRecords.TabIndex = 1;
             grpStudentRecords.TabStop = false;
             grpStudentRecords.Text = "Student Records";
@@ -282,7 +283,7 @@
             dgvStudentRecords.Dock = DockStyle.Fill;
             dgvStudentRecords.Location = new Point(3, 19);
             dgvStudentRecords.Name = "dgvStudentRecords";
-            dgvStudentRecords.Size = new Size(602, 0);
+            dgvStudentRecords.Size = new Size(602, 199);
             dgvStudentRecords.TabIndex = 0;
             // 
             // tlpMain
@@ -298,7 +299,7 @@
             tlpMain.Name = "tlpMain";
             tlpMain.RowCount = 4;
             tlpMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 136F));
-            tlpMain.RowStyles.Add(new RowStyle());
+            tlpMain.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tlpMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tlpMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tlpMain.Size = new Size(614, 423);
@@ -315,7 +316,7 @@
             tlpButtons.Controls.Add(btnLoadJSON, 1, 0);
             tlpButtons.Controls.Add(btnClear, 2, 0);
             tlpButtons.Dock = DockStyle.Fill;
-            tlpButtons.Location = new Point(3, 167);
+            tlpButtons.Location = new Point(3, 366);
             tlpButtons.Name = "tlpButtons";
             tlpButtons.RowCount = 1;
             tlpButtons.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
@@ -332,6 +333,7 @@
             btnSaveJSON.TabIndex = 0;
             btnSaveJSON.Text = "Save to JSON";
             btnSaveJSON.UseVisualStyleBackColor = true;
+            btnSaveJSON.Click += btnSaveJSON_Click;
             // 
             // btnLoadJSON
             // 
@@ -343,6 +345,7 @@
             btnLoadJSON.TabIndex = 1;
             btnLoadJSON.Text = "Load from JSON";
             btnLoadJSON.UseVisualStyleBackColor = true;
+            btnLoadJSON.Click += btnLoadJSON_Click;
             // 
             // btnClear
             // 
@@ -354,14 +357,15 @@
             btnClear.TabIndex = 2;
             btnClear.Text = "Clear Display";
             btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
             // lblStatus
             // 
             lblStatus.AutoSize = true;
             lblStatus.Dock = DockStyle.Fill;
-            lblStatus.Location = new Point(3, 204);
+            lblStatus.Location = new Point(3, 403);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(608, 219);
+            lblStatus.Size = new Size(608, 20);
             lblStatus.TabIndex = 3;
             lblStatus.Text = "Status:";
             // 
