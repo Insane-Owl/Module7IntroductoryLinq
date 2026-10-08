@@ -1,6 +1,7 @@
 using System.Drawing.Text;
 using System.Text.Json;
 using System.IO;
+using System.Linq;
 namespace Module7JsonStudentRecords
 {
     public partial class Form1 : Form
@@ -10,37 +11,7 @@ namespace Module7JsonStudentRecords
         public Form1()
         {
             InitializeComponent();
-
-        }
-
-        private void AddStudent()
-        {
-            if (!ValidateInput()) return;
-
-            students.Add(new Student
-            {
-                StudentId = (int)numStudentId.Value,
-                FirstName = txtFirstName.Text,
-                LastName = txtLastName.Text,
-                ProgramName = txtProgramName.Text,
-                GPA = (double)numGPA.Value
-            });
-
-            DisplayStudents();
-            ClearInputFields();
-            lblStatus.Text = "Student added successfully.";
-        }
-
-        private bool ValidateInput()
-        {
-            if (numStudentId.Value <= 0 || string.IsNullOrWhiteSpace(txtFirstName.Text) ||
-                string.IsNullOrWhiteSpace(txtLastName.Text) || string.IsNullOrWhiteSpace(txtProgramName.Text) ||
-                numGPA.Value < 0 || numGPA.Value > 4)
-            {
-                lblStatus.Text = "Invalid input. Please check all fields.";
-                return false;
-            }
-            return true;
+            LoadStudents();
         }
 
         private void DisplayStudents()
@@ -63,27 +34,9 @@ namespace Module7JsonStudentRecords
             lblStatus.Text = "Display cleared.";
         }
 
-        private void SaveStudents()
-        {
-            if (students.Count == 0)
-            {
-                lblStatus.Text = "No students to save.";
-                return;
-            }
-
-            JsonSerializerOptions options = new JsonSerializerOptions
-            {
-                WriteIndented = true
-            };
-            string filePath = Path.Combine(Application.StartupPath, "students.json");
-            string json = JsonSerializer.Serialize(students, options);
-            File.WriteAllText(filePath, json);
-            lblStatus.Text = $"Students saved to students.json.";
-        }
-
         private void LoadStudents()
         {
-            string filePath = Path.Combine(Application.StartupPath, "students.json");
+            string filePath = "students.json";
             try
             {
                 string json = File.ReadAllText(filePath);
@@ -96,35 +49,6 @@ namespace Module7JsonStudentRecords
             catch (FileNotFoundException) { lblStatus.Text = "File not found."; }
             catch (JsonException) { lblStatus.Text = "Invalid JSON format."; }
             catch (Exception e) { lblStatus.Text = $"Error: {e.Message}"; }
-        }
-
-        private void ClearInputFields()
-        {
-            numStudentId.Value = 0;
-            txtFirstName.Clear();
-            txtLastName.Clear();
-            txtProgramName.Clear();
-            numGPA.Value = 0;
-        }
-
-        private void BtnAddStudent_Click(object sender, EventArgs e)
-        {
-            AddStudent();
-        }
-
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            ClearDisplay();
-        }
-
-        private void btnSaveJSON_Click(object sender, EventArgs e)
-        {
-            SaveStudents();
-        }
-
-        private void btnLoadJSON_Click(object sender, EventArgs e)
-        {
-            LoadStudents();
         }
     }
 }
