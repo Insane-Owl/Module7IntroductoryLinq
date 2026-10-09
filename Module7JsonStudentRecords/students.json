@@ -33,5 +33,75 @@
     "LastName": "Gordon",
     "ProgramName": "Teaching",
     "GPA": 4
+  },
+  {
+    "StudentId": 117,
+    "FirstName": "John",
+    "LastName": "Spartan",
+    "ProgramName": "Software Development",
+    "GPA": 3.9
+  },
+  {
+    "StudentId": 205,
+    "FirstName": "Cortana",
+    "LastName": "Halsey",
+    "ProgramName": "Software Development",
+    "GPA": 4
+  },
+  {
+    "StudentId": 301,
+    "FirstName": "Alan",
+    "LastName": "Wake",
+    "ProgramName": "Creative Writing",
+    "GPA": 3.7
+  },
+  {
+    "StudentId": 404,
+    "FirstName": "Steve",
+    "LastName": "Miner",
+    "ProgramName": "Architecture",
+    "GPA": 3.8
+  },
+  {
+    "StudentId": 512,
+    "FirstName": "Alex",
+    "LastName": "Crafter",
+    "ProgramName": "Architecture",
+    "GPA": 2.9
+  },
+  {
+    "StudentId": 615,
+    "FirstName": "Lara",
+    "LastName": "Croft",
+    "ProgramName": "Software Development",
+    "GPA": 3.5
+  },
+  {
+    "StudentId": 777,
+    "FirstName": "Arthur",
+    "LastName": "Morgan",
+    "ProgramName": "History",
+    "GPA": 2.5
+  },
+  {
+    "StudentId": 888,
+    "FirstName": "Geralt",
+    "LastName": "Rivia",
+    "ProgramName": "Biology",
+    "GPA": 3.1
+  },
+  {
+    "StudentId": 999,
+    "FirstName": "Bruce",
+    "LastName": "Wayne",
+    "ProgramName": "Business",
+    "GPA": 3.4
+  },
+  {
+    "StudentId": 1024,
+    "FirstName": "Clark",
+    "LastName": "Kent",
+    "ProgramName": "Journalism",
+    "GPA": 3.6
   }
 ]
