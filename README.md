@@ -1,4 +1,4 @@
-# Module 7 Introductory Linq
+# Module 7 Introductory LINQ
 
 ## Purpose
 A C# Windows Form application that uses LINQ to filter, query, and summarize a set of student records.
