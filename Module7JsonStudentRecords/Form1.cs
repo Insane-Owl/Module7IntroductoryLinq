@@ -30,7 +30,7 @@ namespace Module7JsonStudentRecords
 
         private void LoadStudents()
         {
-            string filePath = "students.json";
+            string filePath = Path.Combine(AppContext.BaseDirectory, "students.json");
             try
             {
                 string json = File.ReadAllText(filePath);
