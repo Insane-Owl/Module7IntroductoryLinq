@@ -44,13 +44,17 @@
             btnFilterProgram = new Button();
             btnShowAll = new Button();
             tlpRowBottom = new TableLayoutPanel();
+            btnCombinedQuery = new Button();
             btnDisplaySummary = new Button();
             btnSortGPA = new Button();
             btnSortLastName = new Button();
             grpStudentRecords = new GroupBox();
+            tlpRecords = new TableLayoutPanel();
             dgvStudentRecords = new DataGridView();
+            tlpResults = new TableLayoutPanel();
+            lblResults = new Label();
+            lblDetails = new Label();
             tlpMain = new TableLayoutPanel();
-            lblStatus = new Label();
             gtpQueryOptions.SuspendLayout();
             tlpOptionsContainer.SuspendLayout();
             tlpSelections.SuspendLayout();
@@ -59,7 +63,9 @@
             tlpRowTop.SuspendLayout();
             tlpRowBottom.SuspendLayout();
             grpStudentRecords.SuspendLayout();
+            tlpRecords.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvStudentRecords).BeginInit();
+            tlpResults.SuspendLayout();
             tlpMain.SuspendLayout();
             SuspendLayout();
             // 
@@ -216,6 +222,7 @@
             btnSearchStudent.TabIndex = 3;
             btnSearchStudent.Text = "Search for Student";
             btnSearchStudent.UseVisualStyleBackColor = true;
+            btnSearchStudent.Click += BtnSearchStudent_Click;
             // 
             // btnFilterGPA
             // 
@@ -226,6 +233,7 @@
             btnFilterGPA.TabIndex = 2;
             btnFilterGPA.Text = "Filter by GPA";
             btnFilterGPA.UseVisualStyleBackColor = true;
+            btnFilterGPA.Click += BtnFilterGPA_Click;
             // 
             // btnFilterProgram
             // 
@@ -236,6 +244,7 @@
             btnFilterProgram.TabIndex = 1;
             btnFilterProgram.Text = "Filter by Program";
             btnFilterProgram.UseVisualStyleBackColor = true;
+            btnFilterProgram.Click += BtnFilterProgram_Click;
             // 
             // btnShowAll
             // 
@@ -246,13 +255,16 @@
             btnShowAll.TabIndex = 0;
             btnShowAll.Text = "Show All";
             btnShowAll.UseVisualStyleBackColor = true;
+            btnShowAll.Click += BtnShowAll_Click;
             // 
             // tlpRowBottom
             // 
-            tlpRowBottom.ColumnCount = 3;
+            tlpRowBottom.ColumnCount = 4;
             tlpRowBottom.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tlpRowBottom.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tlpRowBottom.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlpRowBottom.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tlpRowBottom.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tlpRowBottom.Controls.Add(btnCombinedQuery, 3, 0);
             tlpRowBottom.Controls.Add(btnDisplaySummary, 2, 0);
             tlpRowBottom.Controls.Add(btnSortGPA, 1, 0);
             tlpRowBottom.Controls.Add(btnSortLastName, 0, 0);
@@ -265,15 +277,27 @@
             tlpRowBottom.Size = new Size(642, 34);
             tlpRowBottom.TabIndex = 7;
             // 
+            // btnCombinedQuery
+            // 
+            btnCombinedQuery.Dock = DockStyle.Fill;
+            btnCombinedQuery.Location = new Point(483, 3);
+            btnCombinedQuery.Name = "btnCombinedQuery";
+            btnCombinedQuery.Size = new Size(156, 28);
+            btnCombinedQuery.TabIndex = 7;
+            btnCombinedQuery.Text = "Combined Query";
+            btnCombinedQuery.UseVisualStyleBackColor = true;
+            btnCombinedQuery.Click += BtnCombinedQuery_Click;
+            // 
             // btnDisplaySummary
             // 
             btnDisplaySummary.Dock = DockStyle.Fill;
             btnDisplaySummary.Location = new Point(323, 3);
             btnDisplaySummary.Name = "btnDisplaySummary";
-            btnDisplaySummary.Size = new Size(316, 28);
+            btnDisplaySummary.Size = new Size(154, 28);
             btnDisplaySummary.TabIndex = 6;
             btnDisplaySummary.Text = "Display Summary";
             btnDisplaySummary.UseVisualStyleBackColor = true;
+            btnDisplaySummary.Click += BtnDisplaySummary_Click;
             // 
             // btnSortGPA
             // 
@@ -284,6 +308,7 @@
             btnSortGPA.TabIndex = 5;
             btnSortGPA.Text = "Sort by GPA";
             btnSortGPA.UseVisualStyleBackColor = true;
+            btnSortGPA.Click += BtnSortGPA_Click;
             // 
             // btnSortLastName
             // 
@@ -294,27 +319,83 @@
             btnSortLastName.TabIndex = 4;
             btnSortLastName.Text = "Sort by Last Name";
             btnSortLastName.UseVisualStyleBackColor = true;
+            btnSortLastName.Click += BtnSortLastName_Click;
             // 
             // grpStudentRecords
             // 
             grpStudentRecords.AutoSize = true;
-            grpStudentRecords.Controls.Add(dgvStudentRecords);
+            grpStudentRecords.Controls.Add(tlpRecords);
             grpStudentRecords.Dock = DockStyle.Fill;
             grpStudentRecords.Location = new Point(3, 139);
             grpStudentRecords.Name = "grpStudentRecords";
-            grpStudentRecords.Size = new Size(654, 261);
+            grpStudentRecords.Size = new Size(654, 281);
             grpStudentRecords.TabIndex = 1;
             grpStudentRecords.TabStop = false;
             grpStudentRecords.Text = "Student Records";
+            // 
+            // tlpRecords
+            // 
+            tlpRecords.ColumnCount = 1;
+            tlpRecords.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tlpRecords.Controls.Add(dgvStudentRecords, 0, 0);
+            tlpRecords.Controls.Add(tlpResults, 0, 1);
+            tlpRecords.Dock = DockStyle.Fill;
+            tlpRecords.Location = new Point(3, 19);
+            tlpRecords.Name = "tlpRecords";
+            tlpRecords.RowCount = 2;
+            tlpRecords.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tlpRecords.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
+            tlpRecords.Size = new Size(648, 259);
+            tlpRecords.TabIndex = 1;
             // 
             // dgvStudentRecords
             // 
             dgvStudentRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvStudentRecords.Dock = DockStyle.Fill;
-            dgvStudentRecords.Location = new Point(3, 19);
+            dgvStudentRecords.Location = new Point(3, 3);
             dgvStudentRecords.Name = "dgvStudentRecords";
-            dgvStudentRecords.Size = new Size(648, 239);
+            dgvStudentRecords.Size = new Size(642, 193);
             dgvStudentRecords.TabIndex = 0;
+            // 
+            // tlpResults
+            // 
+            tlpResults.ColumnCount = 1;
+            tlpResults.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlpResults.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlpResults.Controls.Add(lblResults, 0, 0);
+            tlpResults.Controls.Add(lblDetails, 0, 1);
+            tlpResults.Dock = DockStyle.Fill;
+            tlpResults.Location = new Point(0, 199);
+            tlpResults.Margin = new Padding(0);
+            tlpResults.Name = "tlpResults";
+            tlpResults.RowCount = 2;
+            tlpResults.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tlpResults.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tlpResults.Size = new Size(648, 60);
+            tlpResults.TabIndex = 1;
+            // 
+            // lblResults
+            // 
+            lblResults.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            lblResults.AutoSize = true;
+            lblResults.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            lblResults.Location = new Point(3, 0);
+            lblResults.Name = "lblResults";
+            lblResults.Size = new Size(79, 30);
+            lblResults.TabIndex = 0;
+            lblResults.Text = "Results:";
+            lblResults.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // lblDetails
+            // 
+            lblDetails.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            lblDetails.AutoSize = true;
+            lblDetails.Font = new Font("Segoe UI", 12F);
+            lblDetails.Location = new Point(3, 30);
+            lblDetails.Name = "lblDetails";
+            lblDetails.Size = new Size(0, 30);
+            lblDetails.TabIndex = 1;
+            lblDetails.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // tlpMain
             // 
@@ -322,27 +403,15 @@
             tlpMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tlpMain.Controls.Add(gtpQueryOptions, 0, 0);
             tlpMain.Controls.Add(grpStudentRecords, 0, 1);
-            tlpMain.Controls.Add(lblStatus, 0, 2);
             tlpMain.Dock = DockStyle.Fill;
             tlpMain.Location = new Point(0, 0);
             tlpMain.Name = "tlpMain";
-            tlpMain.RowCount = 3;
+            tlpMain.RowCount = 2;
             tlpMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 136F));
             tlpMain.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tlpMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tlpMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tlpMain.Size = new Size(660, 423);
             tlpMain.TabIndex = 2;
-            // 
-            // lblStatus
-            // 
-            lblStatus.AutoSize = true;
-            lblStatus.Dock = DockStyle.Fill;
-            lblStatus.Location = new Point(3, 403);
-            lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(654, 20);
-            lblStatus.TabIndex = 3;
-            lblStatus.Text = "Status:";
             // 
             // Form1
             // 
@@ -361,7 +430,10 @@
             tlpRowTop.ResumeLayout(false);
             tlpRowBottom.ResumeLayout(false);
             grpStudentRecords.ResumeLayout(false);
+            tlpRecords.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvStudentRecords).EndInit();
+            tlpResults.ResumeLayout(false);
+            tlpResults.PerformLayout();
             tlpMain.ResumeLayout(false);
             tlpMain.PerformLayout();
             ResumeLayout(false);
@@ -373,7 +445,6 @@
         private GroupBox grpStudentRecords;
         private TableLayoutPanel tlpMain;
         private DataGridView dgvStudentRecords;
-        private Label lblStatus;
         private TableLayoutPanel tlpQueryButtons;
         private TableLayoutPanel tlpOptionsContainer;
         private TableLayoutPanel tlpSelections;
@@ -392,5 +463,10 @@
         private Button btnDisplaySummary;
         private TableLayoutPanel tlpRowTop;
         private TableLayoutPanel tlpRowBottom;
+        private TableLayoutPanel tlpRecords;
+        private TableLayoutPanel tlpResults;
+        private Label lblResults;
+        private Label lblDetails;
+        private Button btnCombinedQuery;
     }
 }
